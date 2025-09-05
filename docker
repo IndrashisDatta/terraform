@@ -1,0 +1,21 @@
+yum install docker -y
+systemctl start docker
+systemctl enable docker
+Copy ubuntu image pull and paste in terminal
+copy httpd image pull and paste in terminal
+docker run -it --name devops docker pull ubuntu:rolling
+inside container:
+apt update -y
+apt install apache2 -y
+cd /var/www/html
+cat > index.html
+service apache2 start
+service apache2 status
+Create another tab for terminal:
+docker ps -a
+docker inspect devops | less(to get ip )
+curl http://ip
+Now we have to create another container:
+docker run -it --name devops1 -p 8080:80 ubuntu:rolling /bin/bash
+do everything again in that container
+copy public ip from instance and do :8080
