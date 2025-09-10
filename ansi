@@ -63,4 +63,27 @@ save and exit
  
 ansible-playbook playbook1.yaml --syntax-check
 ansible-playbook playbook1.yaml -C
-ansible-playbook playbook1.yam
+ansible-playbook playbook1.yaml
+
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: frontend
+  labels:
+    app: guestbook
+    tier: frontend
+spec:
+  # modify replicas according to your case
+  replicas: 3
+  selector:
+    matchLabels:
+      tier: frontend
+  template:
+    metadata:
+      labels:
+        tier: frontend
+    spec:
+      containers:
+      - name: php-redis
+        image: us-docker.pkg.dev/google-samples/containers/gke/gb-frontend:v5
+
